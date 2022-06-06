@@ -1,0 +1,16 @@
+{
+  "name": "dust-220606",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jstransformer-markdown-it": "^2.1.0",
+    "less": "^4.1.2",
+    "pug": "^3.0.2"
+  }
+}

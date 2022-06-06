@@ -1,0 +1,15 @@
+h {
+  font-size: 2rem;
+}
+money {
+  width: 512px;
+  height: 256px;
+  display: block;
+  background-image: url('./res/garbage.png');
+}
+db {
+  display: none;
+}
+bb {
+  display: block;
+}

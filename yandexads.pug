@@ -1,0 +1,12 @@
+script(src="https://yandex.ru/ads/system/context.js" async)
+script window.yaContextCb=window.yaContextCb||[]
+
+money#yandex-advmanager
+
+script.
+	window.yaContextCb.push(()=>{
+		Ya.Context.AdvManager.render({
+			renderTo: 'yandex-advmanager',
+			blockId: 'R-A-1708891-1'
+		})
+	})
