@@ -29,8 +29,11 @@ function build_less() {
         // output.imports = array of string filenames of the imports referenced
       },
       function (error) {
-        console.error("conventing error (./index.less > ./dist/index.css)", error);
-			}
+        console.error(
+          "conventing error (./index.less > ./dist/index.css)",
+          error
+        );
+      }
     );
   });
 }
