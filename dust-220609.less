@@ -52,12 +52,20 @@ bb#frontdoor {
   font-size: 3.14rem;
 
   #money {
-	  letter-spacing: 10px;
+    letter-spacing: 10px;
   }
+
+  @font-face {
+    font-family: "Azeret";
+    src: url("./res/AzeretMono.ttf");
+  }
+
+  font-family: "Azeret";
 }
 
 bb {
-  thingy[icon] {
+  thingy[icon],
+  exchange[icon] {
     &::before {
       content: attr(icon) " ";
     }

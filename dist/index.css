@@ -53,11 +53,17 @@ db#app exchange produce::before {
 }
 bb#frontdoor {
   font-size: 3.14rem;
+  font-family: "Azeret";
 }
 bb#frontdoor #money {
   letter-spacing: 10px;
 }
-bb thingy[icon]::before {
+@font-face {
+  font-family: "Azeret";
+  src: url("./res/AzeretMono.ttf");
+}
+bb thingy[icon]::before,
+bb exchange[icon]::before {
   content: attr(icon) " ";
 }
 h {
