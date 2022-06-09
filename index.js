@@ -50,7 +50,7 @@ class Thingy {
   }
 
   get(path) {
-    if (path.includes("/")) {
+    if (path.indexOf("/") >= 0) {
       const traverse = path.split("/");
       let thingy = this;
       while (traverse.length && thingy) {
@@ -107,7 +107,6 @@ function loop(now) {
 
 function main() {
   app = new Thingy(document.getElementById("app")).init();
-  inventory = app.get("inventory");
   frontdoor = new Thingy(document.getElementById("frontdoor")).init();
 
   timestamp = localStorage.getItem("save.timestamp") ?? Date.now();
