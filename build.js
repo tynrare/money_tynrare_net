@@ -1,6 +1,8 @@
 const fs = require("fs");
 const pug = require("pug");
 const less = require("less");
+const browserify = require("browserify");
+const babelify = require("babelify");
 
 function write(file, text) {
   fs.writeFile(file, text, function (err) {
@@ -38,5 +40,24 @@ function build_less() {
   });
 }
 
+function build_js() {
+  browserify({ debug: true })
+    .transform("babelify", { presets: ["@babel/preset-env"] })
+    .require("./index.js", { entry: true })
+    .bundle()
+    .on("error", function (err) {
+      console.log("Error: " + err.message);
+    })
+    .pipe(fs.createWriteStream("dist/index.js"));
+
+  /*
+  fs.copyFile("index.js", "dist/index.js", (err) => {
+    if (err) throw err;
+    console.log("copied: ./index.js > ./dist/index.js");
+  });
+  */
+}
+
 build_pug();
 build_less();
+build_js();

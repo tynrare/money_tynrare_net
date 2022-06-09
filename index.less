@@ -1,3 +1,5 @@
+@import './dust-220609.less';
+
 h {
   font-size: 2rem;
 	width: 100%;
@@ -21,24 +23,22 @@ bb > * {
 	display: block;
 }
 
-body.dark {
-  db {
-    //display: none;
-    display: block;
-  }
+.hide {
+  display: none !important;
+}
 
+body.dark {
   bb {
-    //display: block;
-    display: none;
+    display: none !important;
   }
 }
 
 body.bright {
   db {
-    display: none;
+    display: none !important;
   }
+}
 
-  bb {
-    display: block;
-  }
+:root {
+  --color-mid: #aaa;
 }

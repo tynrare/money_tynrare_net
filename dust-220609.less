@@ -1,0 +1,65 @@
+db#inventory,
+db#rules,
+db#app {
+  border: solid 2px white;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  thingy {
+    &::before {
+      content: attr(id) ": ";
+    }
+  }
+
+  &::before {
+    content: "▮" attr(id);
+    font-weight: bolder;
+  }
+
+  exchange {
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      content: attr(id);
+      font-weight: bolder;
+      font-size: 1.1em;
+    }
+
+    on::before {
+      content: "on ";
+      font-style: italic;
+      color: var(--color-mid);
+    }
+
+    consume::before {
+      content: "consumes ";
+      font-style: italic;
+      color: var(--color-mid);
+    }
+
+    produce::before {
+      content: "produces ";
+      font-style: italic;
+      color: var(--color-mid);
+    }
+  }
+}
+
+bb#frontdoor {
+  font-size: 3.14rem;
+
+  #money {
+	  letter-spacing: 10px;
+  }
+}
+
+bb {
+  thingy[icon] {
+    &::before {
+      content: attr(icon) " ";
+    }
+  }
+}
