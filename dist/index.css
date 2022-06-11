@@ -18,11 +18,11 @@ dust,
   font-size: 0.7em;
   color: var(--color-mid) !important;
 }
-#money {
+bb #money {
   color: var(--color-b);
   text-shadow: 0.02em 0.02em 0px var(--color-a), 0.03em 0.03em 0px var(--color-b);
 }
-#money_but_better {
+bb #money_but_better {
   color: var(--color-shine);
   text-shadow: 0.02em 0.02em 0px var(--color-a), 0.07em 0.07em 0px var(--color-b);
 }
@@ -91,7 +91,8 @@ bb#frontdoor {
   font-size: 3.14rem;
   font-family: "Azeret";
 }
-bb#frontdoor #money {
+bb#frontdoor thingy {
+  padding: 10px;
   letter-spacing: 10px;
 }
 @font-face {
@@ -129,5 +130,5 @@ body.bright db {
   --color-mid: #aaa;
   --color-high: #7fa;
   --color-grabage: #f0f;
-  --color-shine: #fe0;
+  --color-shine: #f30;
 }

@@ -28,19 +28,20 @@ class Thingy {
     const produceargs = produce.split(" ");
     const consumethingy = this.get(consumeargs[0]);
     const producethingy = this.get(produceargs[0]);
-    const factor = Number(produceargs[1] || 1) / Number(consumeargs[1] || 1);
 
-    if (consumethingy.value() < Number(consumeargs[1])) {
-      return;
-    }
+    const toconsume = Number(consumeargs[1] || 1);
+    const toproduce = Number(produceargs[1] || 1);
+    const factor = consumethingy.value() / toconsume;
 
     if (!consumethingy.typeof("infinite")) {
-      const value = consumethingy.value();
-      consumethingy.set(value - Number(consumeargs[1] || 1));
+      if (consumethingy.value() < toconsume) {
+        return;
+      }
+
+      consumethingy.add(-toconsume * factor);
     }
 
-    const value = producethingy.value();
-    producethingy.set(value + consumethingy.value() * factor);
+    producethingy.add(toproduce * factor);
   }
 
   event(key) {
@@ -90,6 +91,10 @@ class Thingy {
 
     this.source.innerHTML = v;
   }
+
+  add(value, key = null) {
+    this.set(this.value(key) + Number(value), key);
+  }
 }
 
 function loop(now) {
@@ -100,24 +105,32 @@ function loop(now) {
   app.set(factor, "time");
   app.event("loop");
 
-  const money = app.get("inventory").get("money");
-
-  frontdoor.set(Math.round(money.value()), "money");
-  localStorage.setItem("save.money", money.value());
+  frontdoor.set(Math.round(app.value("inventory/money")), "money");
+  frontdoor.set(
+    Math.round(app.value("inventory/money_but_better")),
+    "money_but_better"
+  );
+  localStorage.setItem("save.money", app.value("inventory/money"));
   localStorage.setItem("save.timestamp", timestamp);
 
   requestAnimationFrame(() => loop(Date.now()));
+}
+
+function load() {
+  timestamp = localStorage.getItem("save.timestamp") ?? Date.now();
+  const money = Number(localStorage.getItem("save.money"));
+
+  app
+    .get("inventory")
+    .get("money")
+    .set(isNaN(money) ? 0 : money);
 }
 
 function main() {
   app = new Thingy(document.getElementById("app")).init();
   frontdoor = new Thingy(document.getElementById("frontdoor")).init();
 
-  timestamp = localStorage.getItem("save.timestamp") ?? Date.now();
-  app
-    .get("inventory")
-    .get("money")
-    .set(localStorage.getItem("save.money") ?? 0);
+  load();
 
   requestAnimationFrame(() => loop(Date.now()));
 }
