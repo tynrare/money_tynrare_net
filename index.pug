@@ -10,13 +10,19 @@ body.cleaner
 		thingy#time.infinite 0
 		db#inventory
 			thingy#money 0
+			thingy#money_but_better 0
 		db#rules 
 			exchange#base(icon='●')
 				on loop
 				consume time
 				produce inventory/money 1
+			exchange#money_but_better(icon='✦')
+				on loop
+				consume inventory/money 1000
+				produce inventory/money_but_better 1
 	bb#frontdoor
-		thingy#money(icon='●' color='#ff0') 0
+		thingy#money(icon='●') 0
+		thingy#money_but_better(icon='✦') 0
 
 		money#yandex-advmanager
 			GARBAGE#g0 GARBAGE  

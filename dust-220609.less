@@ -20,15 +20,22 @@ body.cleaner {
   }
 }
 
-dust, .dust {
+dust,
+.dust {
   font-size: 0.7em;
   color: var(--color-mid) !important;
 }
 
 #money {
+  color: var(--color-b);
+  text-shadow: 0.02em 0.02em 0px var(--color-a),
+    0.03em 0.03em 0px var(--color-b);
+}
+
+#money_but_better {
   color: var(--color-shine);
-  text-shadow: 0.07em 0.07em 0px var(--color-b),
-    0.05em 0.05em 0px var(--color-a);
+  text-shadow: 0.02em 0.02em 0px var(--color-a),
+    0.07em 0.07em 0px var(--color-b);
 }
 
 bb {
@@ -36,7 +43,6 @@ bb {
   exchange[icon] {
     &::before {
       content: attr(icon) " ";
-      color: var(--color-shine);
     }
   }
 }

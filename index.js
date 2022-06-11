@@ -30,6 +30,10 @@ class Thingy {
     const producethingy = this.get(produceargs[0]);
     const factor = Number(produceargs[1] || 1) / Number(consumeargs[1] || 1);
 
+    if (consumethingy.value() < Number(consumeargs[1])) {
+      return;
+    }
+
     if (!consumethingy.typeof("infinite")) {
       const value = consumethingy.value();
       consumethingy.set(value - Number(consumeargs[1] || 1));
