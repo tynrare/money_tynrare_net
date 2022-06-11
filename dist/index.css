@@ -1,8 +1,35 @@
+money {
+  height: 512px;
+  display: block;
+  background-image: url("./res/garbage.png");
+  width: 100%;
+}
+@font-face {
+  font-family: "Flow";
+  src: url("./res/FlowRounded.ttf");
+}
+body.cleaner db {
+  font-family: "Flow";
+  background-color: var(--color-b);
+  color: var(--color-a);
+}
+dust,
+.dust {
+  font-size: 0.7em;
+  color: var(--color-mid) !important;
+}
+#money {
+  color: var(--color-shine);
+  text-shadow: 0.07em 0.07em 0px var(--color-b), 0.05em 0.05em 0px var(--color-a);
+}
+bb thingy[icon]::before,
+bb exchange[icon]::before {
+  content: attr(icon) " ";
+  color: var(--color-shine);
+}
 db#inventory,
 db#rules,
 db#app {
-  border: solid 2px white;
-  padding: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -16,6 +43,7 @@ db#rules::before,
 db#app::before {
   content: "▮" attr(id);
   font-weight: bolder;
+  color: var(--color-grabage);
 }
 db#inventory exchange,
 db#rules exchange,
@@ -32,24 +60,29 @@ db#app exchange::before {
 }
 db#inventory exchange on::before,
 db#rules exchange on::before,
+db#app exchange on::before,
+db#inventory exchange consume::before,
+db#rules exchange consume::before,
+db#app exchange consume::before,
+db#inventory exchange produce::before,
+db#rules exchange produce::before,
+db#app exchange produce::before {
+  color: var(--color-high);
+}
+db#inventory exchange on::before,
+db#rules exchange on::before,
 db#app exchange on::before {
   content: "on ";
-  font-style: italic;
-  color: var(--color-mid);
 }
 db#inventory exchange consume::before,
 db#rules exchange consume::before,
 db#app exchange consume::before {
   content: "consumes ";
-  font-style: italic;
-  color: var(--color-mid);
 }
 db#inventory exchange produce::before,
 db#rules exchange produce::before,
 db#app exchange produce::before {
   content: "produces ";
-  font-style: italic;
-  color: var(--color-mid);
 }
 bb#frontdoor {
   font-size: 3.14rem;
@@ -62,27 +95,20 @@ bb#frontdoor #money {
   font-family: "Azeret";
   src: url("./res/AzeretMono.ttf");
 }
-bb thingy[icon]::before,
-bb exchange[icon]::before {
-  content: attr(icon) " ";
-}
 h {
   font-size: 2rem;
   width: 100%;
 }
-money {
-  width: 600px;
-  height: 256px;
-  display: block;
-  margin: 10px;
-  background-image: url("./res/garbage.png");
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 db,
 bb {
   display: block;
 }
 bb > * {
-  margin: 10px;
   display: block;
 }
 .hide {
@@ -95,5 +121,10 @@ body.bright db {
   display: none !important;
 }
 :root {
+  --color-a: #fff;
+  --color-b: #000;
   --color-mid: #aaa;
+  --color-high: #7fa;
+  --color-grabage: #f0f;
+  --color-shine: #fe0;
 }
